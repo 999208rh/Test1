@@ -1,0 +1,25 @@
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine(GC.GetTotalMemory(false));
+
+        int[] smallArray = new int[1000];
+        int[] mediumArray = new int[100000];
+        int[] largeArray = new int[1000000];
+
+        Console.WriteLine(GC.GetTotalMemory(false));
+
+        smallArray = null;
+        mediumArray = null;
+        largeArray = null;
+
+
+
+        GC.Collect();
+        GC.WaitForPendingFinalizers();
+
+
+        Console.WriteLine(GC.GetTotalMemory(false));
+    }
+}
